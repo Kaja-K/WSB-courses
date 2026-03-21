@@ -1,6 +1,6 @@
 # WSB Courses
 
-Coursework from WSB Merito Wrocław — Economic Analytics and Data Analysis (spec. Data Analysis).
+Coursework from WSB Merito Wrocław — M.Sc. in Economic Analytics and Data Analysis (spec. Business Intelligence).
 
 | Semester | Folder | Tools | Description |
 |----------|--------|-------|-------------|
