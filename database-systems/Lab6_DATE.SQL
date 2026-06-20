@@ -1,5 +1,5 @@
 -- ============================================================
--- LAB 5 - Funkcje daty i agregujące
+-- FUNKCJE DATY I CZASU
 -- ============================================================
 -- YEAR(data)
 --   Zwraca rok z podanej daty jako liczbę całkowitą.
@@ -113,3 +113,102 @@ HAVING SUM(TotalDue) > (
     ) AS Podsum
 )
 ORDER BY Rok, Miesiac;
+
+-- ============================================================
+-- PODZAPYTANIA W SELECT I WHERE
+-- ============================================================
+-- Podzapytanie (subquery) to zapytanie zagnieżdżone wewnątrz
+-- innego zapytania. Może wystąpić w:
+--   SELECT – oblicza dodatkową wartość dla każdego wiersza
+--   WHERE  – filtruje wiersze na podstawie wyniku podzapytania
+-- ============================================================
+
+USE AdventureWorks2019;
+
+-- ============================================================
+-- PODZAPYTANIA W WHERE
+-- ============================================================
+
+-- ============================================================
+-- Pracownicy zatrudnieni w roku z największą
+-- liczbą zatrudnień (rok zwraca podzapytanie)
+-- ============================================================
+SELECT
+    BusinessEntityID,
+    HireDate
+FROM HumanResources.Employee
+WHERE YEAR(HireDate) = (
+    SELECT TOP 1 YEAR(HireDate)
+    FROM HumanResources.Employee
+    GROUP BY YEAR(HireDate)
+    ORDER BY COUNT(*) DESC);
+
+-- ============================================================
+-- Zamówienia, których wartość jest wyższa
+-- niż średnia wartość wszystkich zamówień
+-- ============================================================
+SELECT
+    SalesOrderID,
+    CustomerID,
+    TotalDue
+FROM Sales.SalesOrderHeader
+WHERE TotalDue > (
+    SELECT AVG(TotalDue)
+    FROM Sales.SalesOrderHeader
+)ORDER BY TotalDue DESC;
+
+-- ============================================================
+-- Klienci, którzy złożyli więcej niż 1 zamówienie
+-- (podzapytanie z IN – lista wartości)
+-- ============================================================
+SELECT
+    CustomerID,
+    SalesOrderID,
+    OrderDate,
+    TotalDue
+FROM Sales.SalesOrderHeader
+WHERE CustomerID IN (
+    SELECT CustomerID
+    FROM Sales.SalesOrderHeader
+    GROUP BY CustomerID
+    HAVING COUNT(*) > 1
+)
+ORDER BY CustomerID;
+
+-- ============================================================
+-- PODZAPYTANIA W SELECT
+-- ============================================================
+
+-- ============================================================
+-- Dla każdego pracownika pokaż jego staż
+-- oraz średni staż wszystkich pracowników
+-- ============================================================
+SELECT
+    BusinessEntityID,
+    HireDate,
+    DATEDIFF(YEAR, HireDate, GETDATE())   AS StazLata,
+    (
+        SELECT AVG(DATEDIFF(YEAR, HireDate, GETDATE()))
+        FROM HumanResources.Employee
+    )                                     AS SredniStazFirmy
+FROM HumanResources.Employee
+ORDER BY StazLata DESC;
+
+-- ============================================================
+-- Dla każdego klienta pokaż wartość jego ostatniego
+-- zamówienia (podzapytanie korelowane – odwołuje się do wiersza
+-- z zapytania zewnętrznego przez alias soh)
+-- ============================================================
+SELECT
+    CustomerID,
+    COUNT(SalesOrderID)   AS LiczbaZamowien,
+    SUM(TotalDue)         AS LacznaWartosc,
+    (
+        SELECT TOP 1 TotalDue
+        FROM Sales.SalesOrderHeader AS ostatnie
+        WHERE ostatnie.CustomerID = soh.CustomerID
+        ORDER BY OrderDate DESC
+    )                     AS OstatnieZamowienie
+FROM Sales.SalesOrderHeader AS soh
+GROUP BY CustomerID
+ORDER BY LacznaWartosc DESC;
