@@ -33,4 +33,4 @@ FROM Sales.SalesOrderHeader soh
 WHERE soh.TotalDue > (
     SELECT AVG(sohh.TotalDue)
     FROM Sales.SalesOrderHeader sohh
-    WHERE YEAR(sohh.OrderDate) = YEAR(soh.OrderDate));s
+    WHERE YEAR(sohh.OrderDate) = YEAR(soh.OrderDate));
