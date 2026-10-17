@@ -4,17 +4,21 @@ Coursework from WSB Merito Wrocław — M.Sc. in Economic Analytics and Data Ana
 
 ## Courses
 
-| Semester | Folder | Tools | Description |
-|----------|--------|-------|-------------|
-| 1 | `database-systems` | T-SQL | Database systems — querying, aggregation, joins, DDL, date functions and subqueries |
-| 2 | `analyst-work-environment` | Python, R | Analyst work environment — tools, workflows and data processing |
-| 2 | `data-mining` | Python | Data mining for economic analytics — CRISP-DM, ETL|
+| Semester | Folder | Description |
+|----------|--------|-------------|
+| 1 | `database-systems` | Database systems — T-SQL querying, aggregation, joins, DDL, date functions and subqueries |
+| 1 | `analyst-work-environment` | Analyst work environment — tools, workflows and data processing |
+| 2 | `data-mining` | Data mining for economic analytics — CRISP-DM, data quality, classification, clustering, association rules, anomaly detection |
+| 2 | `big-data-and-data-warehouses` | Big data and data warehouses |
+| 2 | `sql-for-data-analysis` | SQL in data analysis |
+| 2 | `qualitative-data-analysis` | Qualitative data analysis — qualitative variables vs. qualitative data, sampling, data collection methods |
+| 2 | `time-series-analysis` | Time series analysis |
 
 ## Repository structure
 
 ```
 WSB-courses/
-├── database-systems/          # T-SQL lectures, labs and exam
+├── database-systems/            # T-SQL lectures, labs and exam
 │   ├── Lecture1–2.SQL
 │   ├── Lab1_SELECT.SQL
 │   ├── Lab2_AGGREGATION.SQL
@@ -25,23 +29,20 @@ WSB-courses/
 │   ├── Lab7_SUBQUERRY.SQL
 │   ├── Task1.SQL
 │   └── Exam.SQL
-├── analyst-work-environment/  # Python and R scripts, notebooks
+├── analyst-work-environment/    # Python and R scripts, notebooks
 │   ├── data/
 │   ├── Lab1.ipynb, Lab1.py
 │   ├── Lab2.SQL, Lab2_Tables.SQL
 │   ├── Lecture1.py, Lecture2.PY
 │   └── Lecture3.R
-└── data-mining/               # Python notebooks (Jupyter)
-    └── data/
-    └── Lab1.ipynb,
-    
+├── data-mining/                 # Notebooks and data
+│   ├── data/
+│   └── Lab1.ipynb
+├── big-data-and-data-warehouses/
+├── sql-for-data-analysis/
+├── qualitative-data-analysis/
+└── time-series-analysis/
 ```
-
-## Tools
-
-- **T-SQL** (SQL Server) — database systems
-- **Python** — `pandas`, `numpy`, `matplotlib` / `seaborn`, `scikit-learn`, Jupyter
-- **R** — statistical analysis
 
 ## About
 
