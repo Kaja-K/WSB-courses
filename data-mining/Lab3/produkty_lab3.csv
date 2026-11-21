@@ -1,0 +1,31 @@
+﻿product_id,product_name,category,margin_pct
+P001,mleko,nabiał,18.0
+P002,pieczywo,pieczywo,28.0
+P003,jajka,nabiał,22.0
+P004,masło,nabiał,24.0
+P005,kawa,napoje,35.0
+P006,herbata,napoje,32.0
+P007,cukier,spożywcze,16.0
+P008,banany,owoce i warzywa,26.0
+P009,jabłka,owoce i warzywa,31.0
+P010,jogurt,nabiał,29.0
+P011,płatki śniadaniowe,spożywcze,38.0
+P012,makaron,spożywcze,34.0
+P013,sos pomidorowy,spożywcze,41.0
+P014,parmezan,nabiał,44.0
+P015,chipsy,przekąski,39.0
+P016,cola,napoje,42.0
+P017,salsa,spożywcze,36.0
+P018,pieluchy,dziecko,27.0
+P019,chusteczki nawilżane,dziecko,46.0
+P020,piwo,alkohol,30.0
+P021,wino,alkohol,43.0
+P022,ser dojrzewający,nabiał,40.0
+P023,krakersy,przekąski,37.0
+P024,pizza mrożona,mrożonki,33.0
+P025,lody,mrożonki,35.0
+P026,detergent,chemia,25.0
+P027,papier toaletowy,chemia,21.0
+P028,kurczak,mięso,23.0
+P029,ryż,spożywcze,29.0
+P030,warzywa świeże,owoce i warzywa,30.0
